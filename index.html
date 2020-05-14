@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=utf-8>
+    <title></title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+        <div id="tradingview_34eb3"></div>
+        <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BITSTAMP-BTCUSD/"
+                rel="noopener" target="_blank"><span class="blue-text">BTCUSD Gráfico</span></a> por TradingView</div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+            new TradingView.widget(
+                {
+                    "width": 980,
+                    "height": 610,
+                    "symbol": "BITSTAMP:BTCUSD",
+                    "interval": "30",
+                    "timezone": "Europe/Madrid",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "es",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "allow_symbol_change": true,
+                    "show_popup_button": true,
+                    "popup_width": "1000",
+                    "popup_height": "650",
+                    "container_id": "tradingview_34eb3"
+                }
+            );
+        </script>
+    </div>
+    <!-- TradingView Widget END -->
+    <div>
+        <!-- <form> -->
+            <label for="btc_balance">BTC Balance:</label><br>
+            <input type="text" id="btc_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
+            <label for="usd_balance">USD Balance:</label><br>
+            <input type="text" id="usd_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
+        <!-- </form> -->
+
+        <!-- <button onkeyup="loadnums(btc_balance.value,usd_balance.value)">Call the function</button> -->
+    </div>
+    <div>
+        <script type="text/javascript">
+            function loadnums(btc,usd) {
+                console.log("TEST");
+                console.log(btc);
+                console.log(usd);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
