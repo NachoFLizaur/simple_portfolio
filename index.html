@@ -11,7 +11,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 </head>
 
-<body>
+<body onload="fetchdata()">
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com" rel="noopener"
+                target="_blank"><span class="blue-text">Cotizaciones</span></a> por TradingView</div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js"
+            async>
+                {
+                    "symbols": [
+                        {
+                            "proName": "BITSTAMP:BTCUSD",
+                            "title": "BTC/USD"
+                        },
+                        {
+                            "proName": "BITSTAMP:ETHUSD",
+                            "title": "ETH/USD"
+                        },
+                        {
+                            "description": "XRP/USD",
+                            "proName": "BITSTAMP:XRPUSD"
+                        }
+                    ],
+                        "colorTheme": "dark",
+                            "isTransparent": false,
+                                "locale": "es"
+                }
+            </script>
+    </div>
+    <!-- TradingView Widget END -->
     <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-container">
         <div id="tradingview_34eb3"></div>
@@ -48,11 +77,16 @@
         <label for="usd_balance">USD Balance:</label><br>
         <input type="text" id="usd_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
         <!-- </form> -->
-        
-        <label for="usd_balance">Result:</label><br>
-        <input type="text" id="result" value="unchanged" readonly><br>
+        <label for="btc_sell">Sell:</label><br>
+        <input type="text" id="btc_sell" readonly><br>
 
-        <!-- <button onkeyup="loadnums(btc_balance.value,usd_balance.value)">Call the function</button> -->
+        <label for="curr_btc">Current BTC price:</label><br>
+        <input type="text" id="curr_btc" value="Chech the price ;)" readonly><br>
+
+        <label for="min_buy">Min buy price:</label><br>
+        <input type="text" id="min_buy" value="N/A" readonly><br>
+
+        <button onclick="fetchdata()">Chech the price!</button>
     </div>
     <div>
         <script type="text/javascript">
@@ -60,7 +94,36 @@
                 console.log("TEST");
                 console.log(btc);
                 console.log(usd);
-                document.getElementById("result").value = btc * 2;
+                var curr_btc =  document.getElementById("curr_btc").value;
+                document.getElementById("btc_sell").value = btc * 0.995 * curr_btc;
+            }
+            
+            function fetchdata() {
+                // Create a request variable and assign a new XMLHttpRequest object to it.
+                var request = new XMLHttpRequest()
+                
+                // Open a new connection, using the GET request on the URL endpoint
+                request.open('GET', 'https://www.bitstamp.net/api/ticker/', true)
+                
+                request.onload = function () {
+                    // Begin accessing JSON data here
+                    var data = JSON.parse(this.response)
+                    
+                    if (request.status >= 200 && request.status < 400) {
+                        var data = JSON.parse(this.response)
+                        console.log("btc_price")
+                        console.log(data.last)
+                        document.getElementById("curr_btc").value = data.last;
+                        document.getElementById("min_buy").value = document.getElementById("curr_btc").value * 0.99025;
+
+                        loadnums(document.getElementById("btc_balance").value, document.getElementById("usd_balance").value)
+                    } else {
+                        console.log('error')
+                    }
+                }
+
+                // Send request
+                request.send()
             }
         </script>
     </div>
