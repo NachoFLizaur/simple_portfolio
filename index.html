@@ -43,20 +43,24 @@
     <!-- TradingView Widget END -->
     <div>
         <!-- <form> -->
-            <label for="btc_balance">BTC Balance:</label><br>
-            <input type="text" id="btc_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
-            <label for="usd_balance">USD Balance:</label><br>
-            <input type="text" id="usd_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
+        <label for="btc_balance">BTC Balance:</label><br>
+        <input type="text" id="btc_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
+        <label for="usd_balance">USD Balance:</label><br>
+        <input type="text" id="usd_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
         <!-- </form> -->
+        
+        <label for="usd_balance">Result:</label><br>
+        <input type="text" id="result" value="unchanged" readonly><br>
 
         <!-- <button onkeyup="loadnums(btc_balance.value,usd_balance.value)">Call the function</button> -->
     </div>
     <div>
         <script type="text/javascript">
-            function loadnums(btc,usd) {
+            function loadnums(btc, usd) {
                 console.log("TEST");
                 console.log(btc);
                 console.log(usd);
+                document.getElementById("result").value = btc * 2;
             }
         </script>
     </div>
