@@ -11,7 +11,7 @@
     <script src="scripts.js"></script>
 </head>
 
-<body> <!-- onload="fetch_data()" > -->
+<body>
     <!--  Include TradingView Widgets -->
     <!-- TradingView banner -->
     <div class="tradingview-widget-container">
@@ -72,36 +72,7 @@
     </div>
     <!-- TradingView Widgets END -->
 
-    <div w3-include-html="widgets.html"></div>
-
-    <div>
-        <table style=" margin: auto;">
-           
-        </table>
-        <form action="#" method="GET" style=" margin: auto;">
-            <table id="per_calc_table" style=" margin: auto;">
-                <tr>
-                    <td>Purchase Amount</td>
-                    <td>BTC price</td>
-                    <td>Transaction Fee</td>
-                </tr>
-                <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text" value = "0.005"></td>
-                </tr>
-                <tr style=" text-align: center;">
-                    <td><button onclick="add_row()">Add Operation</button></td>
-                    <td><button onclick="calc_revenue(btc_balance.value, btc_sell.value)">Calculate your revenue!</button></td>
-                </tr>
-                <tr style=" text-align: center;">
-                    <td><input type='text' id='roi' readonly></td>
-                    <td><input type='text' id='btc_gain' readonly></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-    <div>
+    <div style="float: left; width: 50%;">
 
         <label for="btc_balance">BTC Balance:</label><br>
         <input type="text" id="btc_balance" onkeyup="load_nums(btc_balance.value,usd_balance.value)"><br>
@@ -119,6 +90,35 @@
 
         <button onclick="fetch_data()">Check the price!</button>
 
+    </div>
+
+    <div style="float: right; width: 50%;">
+        <table style=" margin: auto;">
+
+        </table>
+        <form action="#" method="GET" style=" margin: auto;">
+            <table id="per_calc_table" style=" margin: auto;">
+                <tr>
+                    <td>Purchase Amount</td>
+                    <td>BTC price</td>
+                    <td>Transaction Fee</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text" value="0.005"></td>
+                </tr>
+                <tr style=" text-align: center;">
+                    <td><button onclick="add_row()">Add Operation</button></td>
+                    <td><button onclick="calc_revenue(btc_balance.value, btc_sell.value)">Calculate your
+                            revenue!</button></td>
+                </tr>
+                <tr style=" text-align: center;">
+                    <td><input type='text' id='roi' readonly></td>
+                    <td><input type='text' id='btc_gain' readonly></td>
+                </tr>
+            </table>
+        </form>
     </div>
 
 </body>
