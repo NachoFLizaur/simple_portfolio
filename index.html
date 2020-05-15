@@ -70,6 +70,41 @@
         </script>
     </div>
     <!-- TradingView Widget END -->
+
+    <div>
+        <table style=" margin: auto;">
+            <tr>
+                <td>
+                    Euros
+                </td>
+                <td>
+                    BTC price
+                </td>
+            </tr>
+        </table>
+        <form action="#" method="GET" style=" margin: auto;">
+            <table id="per_calc" style=" margin: auto;">
+                <tr>
+                    <td>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <input type="text">
+                    </td>
+                </tr>
+                <tr style=" text-align: center;">
+                    <td>
+                        <button onclick="addrow()">
+                            Añadir Fila
+                        </button>
+                    </td>
+                    <td>
+                        <button>Calculate your revenue!</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
     <div>
         <!-- <form> -->
         <label for="btc_balance">BTC Balance:</label><br>
@@ -86,29 +121,31 @@
         <label for="min_buy">Min buy price:</label><br>
         <input type="text" id="min_buy" value="N/A" readonly><br>
 
-        <button onclick="fetchdata()">Chech the price!</button>
+        <button onclick="fetchdata()">Check the price!</button>
+
     </div>
+
     <div>
         <script type="text/javascript">
             function loadnums(btc, usd) {
                 console.log("TEST");
                 console.log(btc);
                 console.log(usd);
-                var curr_btc =  document.getElementById("curr_btc").value;
+                var curr_btc = document.getElementById("curr_btc").value;
                 document.getElementById("btc_sell").value = btc * 0.995 * curr_btc;
             }
-            
+
             function fetchdata() {
                 // Create a request variable and assign a new XMLHttpRequest object to it.
                 var request = new XMLHttpRequest()
-                
+
                 // Open a new connection, using the GET request on the URL endpoint
                 request.open('GET', 'https://www.bitstamp.net/api/ticker/', true)
-                
+
                 request.onload = function () {
                     // Begin accessing JSON data here
                     var data = JSON.parse(this.response)
-                    
+
                     if (request.status >= 200 && request.status < 400) {
                         var data = JSON.parse(this.response)
                         console.log("btc_price")
@@ -125,6 +162,18 @@
                 // Send request
                 request.send()
             }
+
+            function addrow() {
+
+                var tablaExpandible = document.getElementById("per_calc");
+
+                var fila = tablaExpandible.insertRow(tablaExpandible.rows.length - 1);
+                var col1 = fila.insertCell(0);
+                var col2 = fila.insertCell(1);
+                var form = "<input type='text'>"
+                col1.innerHTML = form;
+                col2.innerHTML = form;
+            } 
         </script>
     </div>
 </body>
