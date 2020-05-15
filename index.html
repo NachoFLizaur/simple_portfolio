@@ -4,15 +4,15 @@
 <head>
     <meta charset=utf-8>
     <title></title>
-    <link rel="stylesheet" href="stylesheets/style.css">
-    </style>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script> -->
+    <script src="scripts.js"></script>
 </head>
 
 <body onload="fetchdata()">
-    <!-- TradingView Widget BEGIN -->
+    <!--  Include TradingView Widgets -->
+    <!-- TradingView banner -->
     <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com" rel="noopener"
@@ -34,14 +34,14 @@
                             "proName": "BITSTAMP:XRPUSD"
                         }
                     ],
+
                         "colorTheme": "dark",
                             "isTransparent": false,
                                 "locale": "es"
                 }
             </script>
     </div>
-    <!-- TradingView Widget END -->
-    <!-- TradingView Widget BEGIN -->
+    <!-- TradingView chart -->
     <div class="tradingview-widget-container">
         <div id="tradingview_34eb3"></div>
         <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BITSTAMP-BTCUSD/"
@@ -69,49 +69,37 @@
             );
         </script>
     </div>
-    <!-- TradingView Widget END -->
+    <!-- TradingView Widgets END -->
+
+    <div w3-include-html="widgets.html"></div>
 
     <div>
         <table style=" margin: auto;">
             <tr>
-                <td>
-                    Euros
-                </td>
-                <td>
-                    BTC price
-                </td>
+                <td>Euros</td>
+                <td>BTC price</td>
             </tr>
         </table>
         <form action="#" method="GET" style=" margin: auto;">
             <table id="per_calc" style=" margin: auto;">
                 <tr>
-                    <td>
-                        <input type="text">
-                    </td>
-                    <td>
-                        <input type="text">
-                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
                 </tr>
                 <tr style=" text-align: center;">
-                    <td>
-                        <button onclick="addrow()">
-                            Añadir Fila
-                        </button>
-                    </td>
-                    <td>
-                        <button>Calculate your revenue!</button>
-                    </td>
+                    <td><button onclick="addrow()">Add Operation</button></td>
+                    <td><button>Calculate your revenue!</button></td>
                 </tr>
             </table>
         </form>
     </div>
     <div>
-        <!-- <form> -->
+
         <label for="btc_balance">BTC Balance:</label><br>
         <input type="text" id="btc_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
         <label for="usd_balance">USD Balance:</label><br>
         <input type="text" id="usd_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
-        <!-- </form> -->
+
         <label for="btc_sell">Sell:</label><br>
         <input type="text" id="btc_sell" readonly><br>
 
@@ -125,57 +113,6 @@
 
     </div>
 
-    <div>
-        <script type="text/javascript">
-            function loadnums(btc, usd) {
-                console.log("TEST");
-                console.log(btc);
-                console.log(usd);
-                var curr_btc = document.getElementById("curr_btc").value;
-                document.getElementById("btc_sell").value = btc * 0.995 * curr_btc;
-            }
-
-            function fetchdata() {
-                // Create a request variable and assign a new XMLHttpRequest object to it.
-                var request = new XMLHttpRequest()
-
-                // Open a new connection, using the GET request on the URL endpoint
-                request.open('GET', 'https://www.bitstamp.net/api/ticker/', true)
-
-                request.onload = function () {
-                    // Begin accessing JSON data here
-                    var data = JSON.parse(this.response)
-
-                    if (request.status >= 200 && request.status < 400) {
-                        var data = JSON.parse(this.response)
-                        console.log("btc_price")
-                        console.log(data.last)
-                        document.getElementById("curr_btc").value = data.last;
-                        document.getElementById("min_buy").value = document.getElementById("curr_btc").value * 0.99025;
-
-                        loadnums(document.getElementById("btc_balance").value, document.getElementById("usd_balance").value)
-                    } else {
-                        console.log('error')
-                    }
-                }
-
-                // Send request
-                request.send()
-            }
-
-            function addrow() {
-
-                var tablaExpandible = document.getElementById("per_calc");
-
-                var fila = tablaExpandible.insertRow(tablaExpandible.rows.length - 1);
-                var col1 = fila.insertCell(0);
-                var col2 = fila.insertCell(1);
-                var form = "<input type='text'>"
-                col1.innerHTML = form;
-                col2.innerHTML = form;
-            } 
-        </script>
-    </div>
 </body>
 
 </html>
