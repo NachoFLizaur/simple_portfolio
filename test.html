@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <table name="mytab" id="mytab1">
+        <tr>
+            <td>col1 Val1</td>
+            <td>col2 Val2</td>
+        </tr>
+        <tr>
+            <td>col1 Val3</td>
+            <td>col2 Val4</td>
+        </tr>
+    </table>
+    <script>
+        var table = document.getElementById("mytab1");
+        for (var i = 0; i < table.rows.length; i++) {
+            row = table.rows[i];
+            val1 = row.cells[0];
+            val2 = row.cells[1];
+            console.log("inrow")
+            console.log(val1)
+            console.log(val2)
+            for (var j = 0; j < row.cells.length; j++) {
+                col = row.cells[j]
+                console.log("print")
+                console.log(col);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -5,12 +5,13 @@
     <meta charset=utf-8>
     <title></title>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
     <script src="scripts.js"></script>
 </head>
 
-<body onload="fetchdata()">
+<body> <!-- onload="fetch_data()" > -->
     <!--  Include TradingView Widgets -->
     <!-- TradingView banner -->
     <div class="tradingview-widget-container">
@@ -81,14 +82,14 @@
             </tr>
         </table>
         <form action="#" method="GET" style=" margin: auto;">
-            <table id="per_calc" style=" margin: auto;">
+            <table id="per_calc_table" style=" margin: auto;">
                 <tr>
                     <td><input type="text"></td>
                     <td><input type="text"></td>
                 </tr>
                 <tr style=" text-align: center;">
-                    <td><button onclick="addrow()">Add Operation</button></td>
-                    <td><button>Calculate your revenue!</button></td>
+                    <td><button onclick="add_row()">Add Operation</button></td>
+                    <td><button onclick="calc_revenue()">Calculate your revenue!</button></td>
                 </tr>
             </table>
         </form>
@@ -96,9 +97,9 @@
     <div>
 
         <label for="btc_balance">BTC Balance:</label><br>
-        <input type="text" id="btc_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
+        <input type="text" id="btc_balance" onkeyup="load_nums(btc_balance.value,usd_balance.value)"><br>
         <label for="usd_balance">USD Balance:</label><br>
-        <input type="text" id="usd_balance" onkeyup="loadnums(btc_balance.value,usd_balance.value)"><br>
+        <input type="text" id="usd_balance" onkeyup="load_nums(btc_balance.value,usd_balance.value)"><br>
 
         <label for="btc_sell">Sell:</label><br>
         <input type="text" id="btc_sell" readonly><br>
@@ -109,7 +110,7 @@
         <label for="min_buy">Min buy price:</label><br>
         <input type="text" id="min_buy" value="N/A" readonly><br>
 
-        <button onclick="fetchdata()">Check the price!</button>
+        <button onclick="fetch_data()">Check the price!</button>
 
     </div>
 
