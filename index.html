@@ -76,20 +76,27 @@
 
     <div>
         <table style=" margin: auto;">
-            <tr>
-                <td>Euros</td>
-                <td>BTC price</td>
-            </tr>
+           
         </table>
         <form action="#" method="GET" style=" margin: auto;">
             <table id="per_calc_table" style=" margin: auto;">
                 <tr>
+                    <td>Purchase Amount</td>
+                    <td>BTC price</td>
+                    <td>Transaction Fee</td>
+                </tr>
+                <tr>
                     <td><input type="text"></td>
                     <td><input type="text"></td>
+                    <td><input type="text" value = "0.005"></td>
                 </tr>
                 <tr style=" text-align: center;">
                     <td><button onclick="add_row()">Add Operation</button></td>
-                    <td><button onclick="calc_revenue()">Calculate your revenue!</button></td>
+                    <td><button onclick="calc_revenue(btc_balance.value, btc_sell.value)">Calculate your revenue!</button></td>
+                </tr>
+                <tr style=" text-align: center;">
+                    <td><input type='text' id='roi' readonly></td>
+                    <td><input type='text' id='btc_gain' readonly></td>
                 </tr>
             </table>
         </form>
@@ -98,14 +105,14 @@
 
         <label for="btc_balance">BTC Balance:</label><br>
         <input type="text" id="btc_balance" onkeyup="load_nums(btc_balance.value,usd_balance.value)"><br>
-        <label for="usd_balance">USD Balance:</label><br>
-        <input type="text" id="usd_balance" onkeyup="load_nums(btc_balance.value,usd_balance.value)"><br>
+        <!-- <label for="usd_balance">USD Balance:</label><br>
+        <input type="text" id="usd_balance" onkeyup="load_nums(btc_balance.value,usd_balance.value)"><br> -->
 
-        <label for="btc_sell">Sell:</label><br>
+        <label for="btc_sell">Sell Value:</label><br>
         <input type="text" id="btc_sell" readonly><br>
 
         <label for="curr_btc">Current BTC price:</label><br>
-        <input type="text" id="curr_btc" value="Chech the price ;)" readonly><br>
+        <input type="text" id="curr_btc" value="Check the price ;)" readonly><br>
 
         <label for="min_buy">Min buy price:</label><br>
         <input type="text" id="min_buy" value="N/A" readonly><br>
