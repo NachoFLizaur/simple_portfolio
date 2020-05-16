@@ -66,8 +66,8 @@ function add_row() {
     var col1 = fila.insertCell(0);
     var col2 = fila.insertCell(1);
     var col3 = fila.insertCell(2);
-    var form = "<input type='text'>"
-    var form2 = "<input type='text' value = \"0.005\">"
+    var form = "<input type=\"text\" class=\"form-control form-control-sm\" value=\"0\">"
+    var form2 = "<input type=\"text\" class=\"form-control form-control-sm\" value = \"0.005\">"
     col1.innerHTML = form;
     col2.innerHTML = form;
     col3.innerHTML = form2;
@@ -98,14 +98,14 @@ function calc_revenue() {
         op_fee.push(parseFloat(fee));
         op_btc.push(btc);
 
-        // console.log("amount")
-        // console.log(amount)
-        // console.log("buy_price")
-        // console.log(buy_price)
-        // console.log("fee")
-        // console.log(fee)
-        // console.log("btc")
-        // console.log(btc)
+        console.log("amount")
+        console.log(amount)
+        console.log("buy_price")
+        console.log(buy_price)
+        console.log("fee")
+        console.log(fee)
+        console.log("btc")
+        console.log(btc)
 
     }
 
@@ -134,10 +134,10 @@ function calc_revenue() {
     roi = Math.floor(roi_aux * 1e2) / 1e2;
     btc_gain = Math.floor(btc_gain_aux * 1e2) / 1e2;
 
-    // console.log(roi);
-    // console.log(btc_gain);
+    console.log(roi);
+    console.log(btc_gain);
 
-    document.getElementById("roi").value = "ROI (%) = " + roi;
-    document.getElementById("btc_gain").value = "BTC gained (%) = " + btc_gain;
+    document.getElementById("roi").value = roi;
+    document.getElementById("btc_gain").value = btc_gain;
 
 }

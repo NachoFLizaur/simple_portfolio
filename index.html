@@ -2,8 +2,14 @@
 <html lang="en">
 
 <head>
+    <title>Simple Portfolio</title>
+
     <meta charset=utf-8>
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
@@ -12,152 +18,177 @@
 </head>
 
 <body>
-    <!--  Include TradingView Widgets -->
-    <!-- TradingView banner -->
-    <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com" rel="noopener"
-                target="_blank"><span class="blue-text">Cotizaciones</span></a> por TradingView</div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js"
-            async>
-                {
-                    "symbols": [
-                        {
-                            "proName": "BITSTAMP:BTCUSD",
-                            "title": "BTC/USD"
-                        },
-                        {
-                            "proName": "BITSTAMP:ETHUSD",
-                            "title": "ETH/USD"
-                        },
-                        {
-                            "description": "XRP/USD",
-                            "proName": "BITSTAMP:XRPUSD"
-                        }
-                    ],
+    <div class="container" style="width: Large;">
+        <!--  Include TradingView Widgets -->
+        <!-- TradingView banner -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com" rel="noopener"
+                    target="_blank"><span class="blue-text">Cotizaciones</span></a> por TradingView</div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js"
+                async>
+                    {
+                        "symbols": [
+                            {
+                                "proName": "BITSTAMP:BTCUSD",
+                                "title": "BTC/USD"
+                            },
+                            {
+                                "proName": "BITSTAMP:ETHUSD",
+                                "title": "ETH/USD"
+                            },
+                            {
+                                "description": "XRP/USD",
+                                "proName": "BITSTAMP:XRPUSD"
+                            }
+                        ],
 
-                        "colorTheme": "dark",
-                            "isTransparent": false,
-                                "locale": "es"
-                }
+                            "colorTheme": "dark",
+                                "isTransparent": false,
+                                    "locale": "es"
+                    }
+                </script>
+        </div>
+        <!-- TradingView chart -->
+        <div class="tradingview-widget-container">
+            <div id="tradingview_34eb3"></div>
+            <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BITSTAMP-BTCUSD/"
+                    rel="noopener" target="_blank"><span class="blue-text">BTCUSD Gráfico</span></a> por TradingView
+            </div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+                new TradingView.widget(
+                    {
+                        "width": 920,
+                        "height": 610,
+                        "symbol": "BITSTAMP:BTCUSD",
+                        "interval": "30",
+                        "timezone": "Europe/Madrid",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "es",
+                        "toolbar_bg": "#f1f3f6",
+                        "enable_publishing": false,
+                        "allow_symbol_change": true,
+                        "show_popup_button": true,
+                        "popup_width": "1000",
+                        "popup_height": "650",
+                        "container_id": "tradingview_34eb3"
+                    }
+                );
             </script>
-    </div>
-    <!-- TradingView chart -->
-    <div class="tradingview-widget-container">
-        <div id="tradingview_34eb3"></div>
-        <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BITSTAMP-BTCUSD/"
-                rel="noopener" target="_blank"><span class="blue-text">BTCUSD Gráfico</span></a> por TradingView</div>
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript">
-            new TradingView.widget(
-                {
-                    "width": 980,
-                    "height": 610,
-                    "symbol": "BITSTAMP:BTCUSD",
-                    "interval": "30",
-                    "timezone": "Europe/Madrid",
-                    "theme": "dark",
-                    "style": "1",
-                    "locale": "es",
-                    "toolbar_bg": "#f1f3f6",
-                    "enable_publishing": false,
-                    "allow_symbol_change": true,
-                    "show_popup_button": true,
-                    "popup_width": "1000",
-                    "popup_height": "650",
-                    "container_id": "tradingview_34eb3"
-                }
-            );
-        </script>
-    </div>
-    <!-- TradingView Widgets END -->
+        </div>
+        <!-- TradingView Widgets END -->
 
-    <div style="float: left; width: 50%;">
-
-        <table>
-            <tr>
-                <td>
-                    <label for="btc_balance">BTC Balance</label><br>
-                    <input type="text" id="btc_balance" onkeyup="load_nums()">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="btc_sell_usd">Sell Value ($):</label><br>
-                    <input type="text" id="btc_sell_usd" readonly>
-                </td>
-                <td>
-                    <label for="btc_sell_eur">Sell Value (€):</label><br>
-                    <input type="text" id="btc_sell_eur" readonly>
-                </td>
-            </tr>
-        </table>
-        <!-- <label for="usd_balance">USD Balance:</label><br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="btc_balance">BTC Balance</label><br>
+                                <input type="text" class="form-control form-control-sm" id="btc_balance" placeholder="Your BTC balance"
+                                    onkeyup="load_nums()"><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="btc_sell_usd">Sell Value ($):</label><br>
+                                <input type="text" class="form-control form-control-sm" id="btc_sell_usd" readonly>
+                            </td>
+                            <td>
+                                <label for="btc_sell_eur">Sell Value (€):</label><br>
+                                <input type="text" class="form-control form-control-sm" id="btc_sell_eur" readonly>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- <label for="usd_balance">USD Balance:</label><br>
         <input type="text" id="usd_balance" onkeyup="load_nums(btc_balance.value,usd_balance.value)"><br> -->
 
 
-        <table>
-            <tr>
-                <td>
-                    <label for="curr_btc_usd">BTCUSD ($):</label><br>
-                    <input type="text" id="curr_btc_usd" value="N/A" readonly>
-                </td>
-                <td>
-                    <label for="curr_btc_eur">BTCEUR (€):</label><br>
-                    <input type="text" id="curr_btc_eur" value="N/A" readonly>
-                </td>
-            </tr>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="curr_btc_usd">BTCUSD ($):</label><br>
+                                <input type="text" class="form-control form-control-sm" id="curr_btc_usd" value="N/A" readonly>
+                            </td>
+                            <td>
+                                <label for="curr_btc_eur">BTCEUR (€):</label><br>
+                                <input type="text" class="form-control form-control-sm" id="curr_btc_eur" value="N/A" readonly>
+                            </td>
+                        </tr>
 
-            <tr>
-                <td>
-                    <label for="min_buy_usd">Min buy price ($):</label><br>
-                    <input type="text" id="min_buy_usd" value="N/A" readonly>
-                </td>
-                <td>
-                    <label for="min_buy_eur">Min buy price (€):</label><br>
-                    <input type="text" id="min_buy_eur" value="N/A" readonly>
-                </td>
-            </tr>
+                        <tr>
+                            <td>
+                                <label for="min_buy_usd">Min buy price ($):</label><br>
+                                <input type="text" class="form-control form-control-sm" id="min_buy_usd" value="N/A" readonly>
+                            </td>
+                            <td>
+                                <label for="min_buy_eur">Min buy price (€):</label><br>
+                                <input type="text" class="form-control form-control-sm" id="min_buy_eur" value="N/A" readonly>
+                            </td>
+                        </tr>
 
-            <tr>
-                <td>
-                    <button onclick="fetch_data()">Check the price!</button>
-                </td>
-            </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="fetch_data()">Check the
+                                    price!</button>
+                            </td>
+                        </tr>
 
 
-        </table>
+                    </table>
 
+                </div>
+
+                <div class="col">
+                    <table style=" margin: auto;">
+
+                    </table>
+                    <form action="#" method="GET" style=" margin: auto;">
+                        <table id="per_calc_table" style=" margin: auto;">
+                            <tr>
+                                <td>Purchase Amount</td>
+                                <td>BTC price</td>
+                                <td>Transaction Fee</td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control form-control-sm" value="0"></td>
+                                <td><input type="text" class="form-control form-control-sm" value="0"></td>
+                                <td><input type="text" class="form-control form-control-sm" value="0.005"></td>
+                            </tr>
+                            <tr>
+                                <td><button type="button" class="btn btn-secondary btn-sm" onclick="add_row()">Add
+                                        Operation</button></td>
+                                <td><button type="button" class="btn btn-secondary btn-sm"
+                                        onclick="calc_revenue()">Calculate!</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="roi">ROI (%):</label><br>
+                                    <input type="text" class="form-control form-control-sm" id="roi" readonly>
+                                </td>
+                                <td>
+                                    <label for="btc_gain">BTC gained (%):</label><br>
+                                    <input type="text" class="form-control form-control-sm" id="btc_gain" readonly>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div style="float: right; width: 50%;">
-        <table style=" margin: auto;">
-
-        </table>
-        <form action="#" method="GET" style=" margin: auto;">
-            <table id="per_calc_table" style=" margin: auto;">
-                <tr>
-                    <td>Purchase Amount</td>
-                    <td>BTC price</td>
-                    <td>Transaction Fee</td>
-                </tr>
-                <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text" value="0.005"></td>
-                </tr>
-                <tr>
-                    <td><button onclick="add_row()">Add Operation</button></td>
-                    <td><button onclick="calc_revenue()">Calculate your revenue!</button></td>
-                </tr>
-                <tr style=" text-align: center;">
-                    <td><input type='text' id='roi' readonly></td>
-                    <td><input type='text' id='btc_gain' readonly></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-
+    <!-- BootStrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
