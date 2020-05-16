@@ -137,7 +137,7 @@ function calc_revenue() {
     console.log(roi);
     console.log(btc_gain);
 
-    document.getElementById("roi").value = roi;
-    document.getElementById("btc_gain").value = btc_gain;
+    document.getElementById("roi").value = roi + " %";
+    document.getElementById("btc_gain").value = btc_gain + " %";
 
 }
