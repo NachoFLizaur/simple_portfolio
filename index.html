@@ -57,7 +57,30 @@
             </div>
             <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
             <script type="text/javascript">
-                new TradingView.widget(
+                if (window.innerWidth <= 800){
+                    console.log("mobile");
+                    new TradingView.widget(
+                    {
+                        "width": 350,
+                        "height": 610,
+                        "symbol": "BITSTAMP:BTCUSD",
+                        "interval": "30",
+                        "timezone": "Europe/Madrid",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "es",
+                        "toolbar_bg": "#f1f3f6",
+                        "enable_publishing": false,
+                        "allow_symbol_change": true,
+                        "show_popup_button": true,
+                        "popup_width": "1000",
+                        "popup_height": "650",
+                        "container_id": "tradingview_34eb3"
+                    }
+                );
+                } else {
+                    console.log("not mobile");
+                    new TradingView.widget(
                     {
                         "width": 920,
                         "height": 610,
@@ -76,6 +99,8 @@
                         "container_id": "tradingview_34eb3"
                     }
                 );
+                }
+                
             </script>
         </div>
         <!-- TradingView Widgets END -->
