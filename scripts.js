@@ -12,8 +12,8 @@ function fetch_data() {
         
         if (request_usd.status >= 200 && request_usd.status < 400) {
             var data = JSON.parse(this.response)
-            console.log("btc_price_usd")
-            console.log(data.last)
+            // console.log("btc_price_usd")
+            // console.log(data.last)
             document.getElementById("curr_btc_usd").value = data.last;
             min_buy = document.getElementById("curr_btc_usd").value * 0.99025;
             document.getElementById("min_buy_usd").value = Math.floor(min_buy * 1e2) / 1e2;
@@ -30,8 +30,8 @@ function fetch_data() {
         
         if (request_eur.status >= 200 && request_eur.status < 400) {
             var data = JSON.parse(this.response)
-            console.log("btc_price_eur")
-            console.log(data.last)
+            // console.log("btc_price_eur")
+            // console.log(data.last)
             document.getElementById("curr_btc_eur").value = data.last;
             min_buy = document.getElementById("curr_btc_eur").value * 0.99025;
             document.getElementById("min_buy_eur").value = Math.floor(min_buy * 1e2) / 1e2;
@@ -93,20 +93,19 @@ function calc_revenue() {
         aux = amount * (1 - fee) / buy_price;
         btc = Math.floor(aux * 1e8) / 1e8;
 
-
         op_amount.push(parseFloat(amount));
         op_buy_price.push(parseFloat(buy_price));
         op_fee.push(parseFloat(fee));
         op_btc.push(btc);
 
-        console.log("amount")
-        console.log(amount)
-        console.log("buy_price")
-        console.log(buy_price)
-        console.log("fee")
-        console.log(fee)
-        console.log("btc")
-        console.log(btc)
+        // console.log("amount")
+        // console.log(amount)
+        // console.log("buy_price")
+        // console.log(buy_price)
+        // console.log("fee")
+        // console.log(fee)
+        // console.log("btc")
+        // console.log(btc)
 
     }
 
@@ -135,8 +134,8 @@ function calc_revenue() {
     roi = Math.floor(roi_aux * 1e2) / 1e2;
     btc_gain = Math.floor(btc_gain_aux * 1e2) / 1e2;
 
-    console.log(roi);
-    console.log(btc_gain);
+    // console.log(roi);
+    // console.log(btc_gain);
 
     document.getElementById("roi").value = "ROI (%) = " + roi;
     document.getElementById("btc_gain").value = "BTC gained (%) = " + btc_gain;
